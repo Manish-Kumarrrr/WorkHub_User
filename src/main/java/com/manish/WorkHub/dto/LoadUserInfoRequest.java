@@ -5,7 +5,10 @@ import lombok.Data;
 
 @Data
 @Builder
-public class LoginRequest {
+public class LoadUserInfoRequest {
     String email;
     String password;
+    public String getEmail() {
+        return this.email;
+    }
 }

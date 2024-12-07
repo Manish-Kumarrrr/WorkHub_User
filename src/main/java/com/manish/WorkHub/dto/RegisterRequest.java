@@ -1,6 +1,5 @@
 package com.manish.WorkHub.dto;
 
-
 import com.manish.WorkHub.enums.Role;
 import lombok.Builder;
 import lombok.Data;
@@ -13,5 +12,8 @@ public class RegisterRequest {
     private String password;
     private String profileUrl;
     private String phoneNo;
-    private Role role;
+    private Role role=Role.USER;
+    public String getEmail() {
+        return this.email;
+    }
 }

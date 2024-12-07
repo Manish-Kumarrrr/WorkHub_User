@@ -9,10 +9,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data // Lombok generates getters, setters, and toString methods
 public class User {
     @Id
-    private String id; // MongoDB uses String for IDs
-
-    private String name;
     private String email;
+    private String name;
     private String password;
     private String profileUrl;
     private String phoneNo;
