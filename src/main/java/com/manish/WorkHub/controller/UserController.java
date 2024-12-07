@@ -20,12 +20,10 @@ public class UserController {
 
     @PostMapping("/registerUser")
     public ResponseEntity<?> registerUser(@RequestBody RegisterRequest registerRequest){
-        System.out.println(registerRequest.getEmail()+"-----");
-        return new ResponseEntity<>("yes",HttpStatus.OK);
-//        return new ResponseEntity<>(userService.registerUser(registerRequest), HttpStatus.CREATED);
+        return new ResponseEntity<>(userService.registerUser(registerRequest), HttpStatus.CREATED);
     }
 
-    @PostMapping("/loadUser")
+    @PostMapping("/loadUserInfo")
     public ResponseEntity<ApiResponse> loadUserInfo(@RequestBody LoadUserInfoRequest loadUserInfoRequest){
         return new ResponseEntity<>(userService.loadUserInfo(loadUserInfoRequest), HttpStatus.OK);
     }

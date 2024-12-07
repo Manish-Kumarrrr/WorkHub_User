@@ -12,8 +12,5 @@ public class RegisterRequest {
     private String password;
     private String profileUrl;
     private String phoneNo;
-    private Role role=Role.USER;
-    public String getEmail() {
-        return this.email;
-    }
+    private Role role;
 }

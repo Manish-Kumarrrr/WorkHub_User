@@ -1,12 +1,12 @@
 package com.manish.WorkHub.dto;
 
-
 import com.manish.WorkHub.enums.Role;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@NoArgsConstructor
 public class ApiResponse {
     private String email;
     private String name;

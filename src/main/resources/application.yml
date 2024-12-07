@@ -7,10 +7,10 @@ spring:
       uri: mongodb+srv://manish:fBxLDjziEgA6CCEn@vrv.tzoxj.mongodb.net/?retryWrites=true&w=majority&appName=vrv
       database: user
 
-#logging:
-#  level:
-#    root: WARN
-#
+logging:
+  level:
+    root: WARN
+
 #secret:
 #  key: CHEFsEVfypW#7g9^k*Z8$VTaK+HaV^uv
 #

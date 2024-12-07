@@ -19,12 +19,10 @@ public class UtilityConfig {
 
     @Bean
     public OpenAPI customOpenAPI() {
-
         return new OpenAPI()
-                .info(new Info().title("UserService"))
-                .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
-                .components(new Components().addSecuritySchemes("bearerAuth", new SecurityScheme()
-                        .name("bearerAuth").type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")));
-
+                .info(new Info()
+                        .title("WorkHub_User Service Api documentation")
+                        .version("1.0")
+                        .description("This is the API documentation for my Work Hub application."));
     }
 }

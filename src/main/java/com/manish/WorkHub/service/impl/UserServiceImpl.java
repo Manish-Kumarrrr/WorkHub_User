@@ -4,6 +4,7 @@ package com.manish.WorkHub.service.impl;
 import com.manish.WorkHub.dto.LoadUserInfoRequest;
 import com.manish.WorkHub.dto.RegisterRequest;
 import com.manish.WorkHub.dto.ApiResponse;
+import com.manish.WorkHub.enums.Role;
 import com.manish.WorkHub.exception.UserAlreadyExistsException;
 import com.manish.WorkHub.exception.UserNotFoundException;
 import com.manish.WorkHub.model.User;
@@ -29,6 +30,7 @@ public class UserServiceImpl implements UserService {
         if(!userRepository.findByEmail(registerRequest.getEmail()).isEmpty()){
             throw  new UserAlreadyExistsException("User Already Exists with this email id");
         }
+        if(registerRequest.getRole()==null)registerRequest.setRole(Role.USER);
         System.out.println(registerRequest.toString());
         User user=modelMapper.map(registerRequest,User.class);
         Object savedUser=userRepository.save(user);
