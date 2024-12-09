@@ -1,7 +1,6 @@
 package com.manish.WorkHub.dto;
 
 import com.manish.WorkHub.enums.Role;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

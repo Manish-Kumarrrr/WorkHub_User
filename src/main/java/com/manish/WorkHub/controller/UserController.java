@@ -1,6 +1,6 @@
 package com.manish.WorkHub.controller;
 
-import com.manish.WorkHub.dto.LoadUserInfoRequest;
+import com.manish.WorkHub.dto.UserInfoRequest;
 import com.manish.WorkHub.dto.RegisterRequest;
 import com.manish.WorkHub.dto.ApiResponse;
 import com.manish.WorkHub.service.UserService;
@@ -12,23 +12,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/api")
+@RequestMapping("/v1/api/user")
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("/registerUser")
-    public ResponseEntity<?> registerUser(@RequestBody RegisterRequest registerRequest){
+    @PostMapping("/register")
+    public ResponseEntity<ApiResponse> registerUser(@RequestBody RegisterRequest registerRequest){
         return new ResponseEntity<>(userService.registerUser(registerRequest), HttpStatus.CREATED);
     }
 
-    @PostMapping("/loadUserInfo")
-    public ResponseEntity<ApiResponse> loadUserInfo(@RequestBody LoadUserInfoRequest loadUserInfoRequest){
-        return new ResponseEntity<>(userService.loadUserInfo(loadUserInfoRequest), HttpStatus.OK);
+    @PostMapping("/info")
+    public ResponseEntity<ApiResponse> getUserInfo(@RequestBody UserInfoRequest userInfoRequest){
+        return new ResponseEntity<>(userService.loadUserInfo(userInfoRequest), HttpStatus.OK);
     }
 
-    @GetMapping("/allUser")
+    @GetMapping("/all")
     public  ResponseEntity<List<ApiResponse>> getAllUser(){
         return new ResponseEntity<>(userService.getAllUser(),HttpStatus.OK);
     }
