@@ -8,6 +8,9 @@ import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Configuration
 public class UtilityConfig {
@@ -24,5 +27,14 @@ public class UtilityConfig {
                         .title("WorkHub_User Service Api documentation")
                         .version("1.0")
                         .description("This is the API documentation for my Work Hub application."));
+    }
+
+    @Bean
+    public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory connectionFactory) {
+        RedisTemplate<String, String> template = new RedisTemplate<>();
+        template.setConnectionFactory(connectionFactory);
+        template.setKeySerializer(new StringRedisSerializer());
+        template.setValueSerializer(new StringRedisSerializer());
+        return template;
     }
 }
