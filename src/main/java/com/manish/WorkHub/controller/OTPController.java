@@ -1,6 +1,7 @@
 package com.manish.WorkHub.controller;
 
 
+
 import com.manish.WorkHub.service.OTPService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -8,10 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/otp")
+@RequestMapping("/v1/api/otp")
 @RequiredArgsConstructor
 public class OTPController {
-    private OTPService otpService;
+    private final OTPService otpService;
 
     @PostMapping("/generate")
     public ResponseEntity<String> generateOtp(@RequestParam String email) {

@@ -4,9 +4,24 @@ server:
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://manish:fBxLDjziEgA6CCEn@vrv.tzoxj.mongodb.net/?retryWrites=true&w=majority&appName=vrv
-      database: user
-
+      uri: ${MONGO_DATABASE_URL}
+      database: ${MONGO_DATABASE_TABLE:user}
+  mail:
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+          auth: true
+    host: smtp.gmail.com
+    username: ${ADMIN_EMAIL:your-email@gmail.com}
+    password: ${ADMIN_EMAIL_PASSWORD}
+    port: 587
+  redis:
+    host: ${REDIS_DATABASE_URL}
+    password: ${REDIS_DATABASE_PASSWORD}
+    port: 16520
+    username: default
 
 
 logging:

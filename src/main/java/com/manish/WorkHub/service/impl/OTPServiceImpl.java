@@ -1,5 +1,7 @@
 package com.manish.WorkHub.service.impl;
 
+import com.manish.WorkHub.exception.UserAlreadyExistsException;
+import com.manish.WorkHub.repository.UserRepository;
 import com.manish.WorkHub.service.OTPService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,15 +17,18 @@ import java.util.concurrent.TimeUnit;
 @RequiredArgsConstructor
 public class OTPServiceImpl implements OTPService {
 
+    private final UserRepository userRepository;
+    private final RedisTemplate<String, String> redisTemplate;
 
-    private RedisTemplate<String, String> redisTemplate;
+//    private final JavaMailSender mailSender;
 
-    private JavaMailSender mailSender;
-
-    @Value("${otp.expire.time}")
-    private static long OTP_EXPIRATION_TIME;
+//    @Value("${otp.expire.time}")
+    private static long OTP_EXPIRATION_TIME=600;
 
     public void generateAndSendOtp(String email) {
+        if(userRepository.findByEmail(email).isEmpty()) {
+            throw new UserAlreadyExistsException("User doesn't exist with this email: " + email);
+        }
         String otp = generateOtp();
         redisTemplate.opsForValue().set(email, otp, OTP_EXPIRATION_TIME, TimeUnit.SECONDS);
         sendEmail(email, otp);
@@ -31,6 +36,7 @@ public class OTPServiceImpl implements OTPService {
 
     public boolean validateOtp(String email, String otp) {
         String storedOtp = redisTemplate.opsForValue().get(email);
+        System.out.println(storedOtp);
         return otp.equals(storedOtp);
     }
 
@@ -59,7 +65,7 @@ public class OTPServiceImpl implements OTPService {
         );
 
         message.setText(emailBody);
-        mailSender.send(message);
+//        mailSender.send(message);
     }
 
 }
