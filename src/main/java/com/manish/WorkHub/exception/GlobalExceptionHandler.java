@@ -38,4 +38,10 @@ public class GlobalExceptionHandler {
         // Return a ProblemDetail with a specific status and the exception message
         return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, exception.getMessage());
     }
+
+    @ExceptionHandler(RuntimeException.class)
+    public ProblemDetail handleRuntimeException(RuntimeException exception){
+        return ProblemDetail.forStatusAndDetail(HttpStatus.EXPECTATION_FAILED,exception.getMessage());
+    }
+
 }

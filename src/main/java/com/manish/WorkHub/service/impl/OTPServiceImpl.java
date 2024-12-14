@@ -22,8 +22,9 @@ public class OTPServiceImpl implements OTPService {
 
 //    private final JavaMailSender mailSender;
 
-//    @Value("${otp.expire.time}")
-    private static long OTP_EXPIRATION_TIME=600;
+    @Value("${otp.expire.time}")
+    private long OTP_EXPIRATION_TIME;
+
 
     public void generateAndSendOtp(String email) {
         if(userRepository.findByEmail(email).isEmpty()) {

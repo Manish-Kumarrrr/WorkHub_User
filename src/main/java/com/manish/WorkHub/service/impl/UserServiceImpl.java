@@ -49,4 +49,5 @@ public class UserServiceImpl implements UserService {
                 .map(user -> modelMapper.map(user, ApiResponse.class))
                 .collect(Collectors.toList());
     }
+
 }
