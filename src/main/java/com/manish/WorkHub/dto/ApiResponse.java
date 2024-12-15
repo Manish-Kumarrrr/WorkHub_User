@@ -4,6 +4,9 @@ import com.manish.WorkHub.enums.Role;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 public class ApiResponse {
@@ -13,4 +16,6 @@ public class ApiResponse {
     private String profileUrl;
     private String phoneNo;
     private Role role;
+    private Date date;
+    private List<String> interests;
 }
