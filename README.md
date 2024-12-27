@@ -38,7 +38,36 @@ The `WorkHub_User_Service` is part of a microservices architecture. It communica
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/Manish-Kumarrrr/WorkHub_User_Service.git
+https://github.com/Manish-Kumarrrr/WorkHub_User_Service.git
 cd WorkHub_User_Service
 ```
+
+### Configuration: MongoDB and Redis Setup
+
+Below is the configuration for **MongoDB** and **Redis** in the `application.yml` file. Ensure these settings are properly defined before running the service.
+
+```yaml
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/workhub_users
+  redis:
+    host: localhost
+    port: 6379
+    password: # Add password if Redis is secured; leave blank otherwise
+
+```
+
+### Run the Application
+To start the service:
+
+```bash
+Copy code
+mvn spring-boot:run
+```
+The service will run on http://localhost:8080.
+
+
+This `README.md` provides a high-level overview of the service and its features without delving into specific API endpoint details.
+
 
