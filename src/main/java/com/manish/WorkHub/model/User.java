@@ -14,11 +14,12 @@ public class User {
     @Id
     private String email;
     private String name;
+    private String gender;
     private String password;
     private String profileUrl;
     private String phoneNo;
     private Role role;
-    private Date date;
+    private Date joinDate;
     private List<String> interests;
 
 }

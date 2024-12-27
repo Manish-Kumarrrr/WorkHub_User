@@ -23,10 +23,7 @@ public class CloudinaryService {
     public Map<String, String> generateUploadSignature() {
         try {
             Map<String, Object> params = new HashMap<>();
-            params.put("timestamp", System.currentTimeMillis() / 1000L);
-            params.put("folder", "uploads"); // Optional folder in Cloudinary
-            params.put("resource_type", "image");
-
+            params.put("timestamp", System.currentTimeMillis() / 1000L); // seconds
             String signature = cloudinary.apiSignRequest(params, "C1N6_laJXuLtfDg-eiJEpB1fuk0");
             Map<String, String> output = new HashMap<>();
             output.put("signature", signature);

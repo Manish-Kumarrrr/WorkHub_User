@@ -1,6 +1,7 @@
 package com.manish.WorkHub.dto;
 
 import com.manish.WorkHub.enums.Role;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,10 +13,11 @@ import java.util.List;
 public class ApiResponse {
     private String email;
     private String name;
+    private String gender;
     private String password;
     private String profileUrl;
     private String phoneNo;
     private Role role;
-    private Date date;
+    private Date joinDate;
     private List<String> interests;
 }
